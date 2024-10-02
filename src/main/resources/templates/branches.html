@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Branches</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        table{
+            border-collapse: collapse;
+            width: 60%;
+            margin-left: 20%;
+        }
+
+        th, td{
+            padding: 5px;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        thead th{
+            border-bottom: 2px solid black;
+        }
+
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd){
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Branches in Bangalore</h1>
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>Branch Id</th>
+                <th>Branch Name</th>
+                <th>City</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="branch : ${branches}">
+                <td th:text="${branch.id}"></td>
+                <td th:text="${branch.branchName}"></td>
+                <td th:text="${branch.city}"></td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>
