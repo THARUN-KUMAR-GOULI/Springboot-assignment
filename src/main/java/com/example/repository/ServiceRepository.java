@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ServiceRepository extends JpaRepository<Services, Integer> {
-    List<Services> findAll();
 
     List<Services> findByBank(Bank bank);
 }

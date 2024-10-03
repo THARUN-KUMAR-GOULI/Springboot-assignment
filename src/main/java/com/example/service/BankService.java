@@ -28,25 +28,14 @@ public class BankService {
         return bankRepository.findByCity(city);
     }
 
-//    public List<Services> getServices(){
-//        return serviceRepository.findAll();
-//    }
-
     public Map<Bank, List<String>> getServices(){
 
-//        List<Services> services = serviceRepository.findAll();
-//
-//        return services.stream().collect(Collectors.groupingBy(
-//                Services::getBank,
-//                Collectors.mapping(Services::getServiceName, Collectors.toList())
-//        ));
 
-        List<Bank> banks = bankRepository.findAllByOrderByBranchName(); // Assuming a method to fetch banks in order
+        List<Bank> banks = bankRepository.findAllByOrderByBranchName();
 
-        // Now create the map to store services
         Map<Bank, List<String>> servicesMap = new LinkedHashMap<>();
         for (Bank bank : banks) {
-            List<Services> serviceList = serviceRepository.findByBank(bank); // Method to find services by bank
+            List<Services> serviceList = serviceRepository.findByBank(bank);
             List<String> serviceNames = serviceList.stream()
                     .map(Services::getServiceName)
                     .collect(Collectors.toList());
